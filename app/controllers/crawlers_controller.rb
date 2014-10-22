@@ -1,5 +1,5 @@
 class CrawlersController < ApplicationController
-  before_action :set_keyword
+  before_action :set_keyword, :except => [:search, :page_rank]
   
   def google
     escaped_url = URI.escape("https://www.google.com/search?q=#{@keyword}&oe=utf-8&hl=en")
