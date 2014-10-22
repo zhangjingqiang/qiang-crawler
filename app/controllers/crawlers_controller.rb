@@ -1,5 +1,5 @@
 class CrawlersController < ApplicationController
-  before_action :set_keyword, :except => [:search, :page_rank]
+  before_action :set_keyword, :except => [:search, :top, :page_rank]
   
   def google
     escaped_url = URI.escape("https://www.google.com/search?q=#{@keyword}&oe=utf-8&hl=en")
@@ -48,7 +48,12 @@ class CrawlersController < ApplicationController
   
   def search
     session['keyword'] = params[:s]
+    Keyword.create(:word => params[:s]) if params[:s] != ''
     redirect_to request.env["HTTP_REFERER"]
+  end
+
+  def top
+    @keywords = Keyword.select('word').group("word").count.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }.first(10)
   end
 
   def page_rank

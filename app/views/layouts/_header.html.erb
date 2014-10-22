@@ -25,6 +25,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li<%= ' class=active' if params[:controller] == 'crawlers' and params[:action] == 'top' %>><a href="<%= top_path %>">Top 10</a></li>
         <li<%= ' class=active' if params[:controller] == 'crawlers' and params[:action] == 'page_rank' %>><a href="<%= page_rank_path %>">Page rank</a></li>
         <li><a href="http://about.me/zhangjingqiang">About me</a></li>
       </ul>

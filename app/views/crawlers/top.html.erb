@@ -1,0 +1,7 @@
+<% if @keywords.present? %>
+  <div class="alert alert-danger">
+    <% @keywords.each_with_index do |(k, v), index| %>
+      <p><%= index + 1 %>&nbsp;<%= k %>: <%= v %></p>
+    <% end %>
+  </div>
+<% end %>

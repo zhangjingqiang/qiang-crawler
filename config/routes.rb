@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'youtube', to: 'crawlers#youtube', as: 'youtube'
   get 'amazon', to: 'crawlers#amazon', as: 'amazon'
   get 'search', to: 'crawlers#search', as: 'search'
+  get 'top', to: 'crawlers#top', as: 'top'
   get 'page_rank', to: 'crawlers#page_rank', as: 'page_rank'
 
   root 'welcome#index'
