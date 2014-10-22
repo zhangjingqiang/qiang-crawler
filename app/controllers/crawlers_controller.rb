@@ -46,15 +46,16 @@ class CrawlersController < ApplicationController
     }
   end
   
-  def itunes_store
-  end
-  
-  def google_play
-  end
-  
   def search
     session['keyword'] = params[:s]
     redirect_to request.env["HTTP_REFERER"]
+  end
+
+  def page_rank
+    target_url = URI.parse(request.original_url).host
+    @backlinks = PageRankr.backlinks(target_url, :google, :bing, :yahoo, :alexa)
+    @indexes = PageRankr.indexes(target_url, :google, :bing, :yahoo)
+    @ranks = PageRankr.ranks(target_url, :alexa_us, :alexa_global, :google, :moz_rank, :page_authority)
   end
   
   private

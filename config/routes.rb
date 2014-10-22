@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   get 'flickr', to: 'crawlers#flickr', as: 'flickr'
   get 'youtube', to: 'crawlers#youtube', as: 'youtube'
   get 'amazon', to: 'crawlers#amazon', as: 'amazon'
-  get 'itunes_store', to: 'crawlers#itunes_store', as: 'itunes_store'
-  get 'google_play', to: 'crawlers#google_play', as: 'google_play'
   get 'search', to: 'crawlers#search', as: 'search'
+  get 'page_rank', to: 'crawlers#page_rank', as: 'page_rank'
 
   root 'welcome#index'
 end

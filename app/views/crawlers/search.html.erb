@@ -1,9 +1,0 @@
-<div class="alert alert-warning">
-  <%= @doc.xpath("//*[@id='resultStats']/text()") %>
-</div>
-
-<% @doc.xpath('//h3/a').each do |link| %>
-	<div class="alert alert-info">
-    <%= link.content %>
-  </div>
-<% end %>
