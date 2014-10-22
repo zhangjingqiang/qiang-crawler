@@ -1,1 +1,6 @@
-Amazon
+<% @doc.each do |detail| %>
+	<div class="alert alert-info">
+    <p><%= detail.xpath("//span[@id='btAsinTitle']").text %></p>
+    <p><%= detail.xpath("//span[@id='actualPriceValue']/b").text %></p>
+  </div>
+<% end %>

@@ -1,2 +1,132 @@
-<h1>Crawlers#facebook</h1>
-<p>Find me in app/views/crawlers/facebook.html.erb</p>
+<% if !@json.nil? %>
+<table class="table table-bordered">
+  <thead>
+    <tr></tr>
+    <tr></tr>
+  </thead>
+  <tbody>
+    <tr class="active">
+      <td>ID</td>
+      <td><%= @json['id'] %></td>
+    </tr>
+    <tr class="success">
+      <td>About</td>
+      <td><%= @json['about'] %></td>
+    </tr>
+    <tr class="info">
+      <td>Can post</td>
+      <td><%= @json['can_post'] %></td>
+    </tr>
+    <tr class="warning">
+      <td>Category</td>
+      <td><%= @json['category'] %></td>
+    </tr>
+    <tr class="danger">
+      <td>Checkins</td>
+      <td><%= @json['checkins'] %></td>
+    </tr>
+    <% if !@json['cover'].nil? %>
+    <tr class="active">
+      <td>Cover</td>
+      <td>
+        <table class="table table-bordered">
+          <tr>
+            <td>Cover ID</td>
+            <td>
+              <%= @json['cover']['cover_id'] %>
+            </td>
+          </tr>
+          <tr>
+            <td>Offset X</td>
+            <td>
+              <%= @json['cover']['offset_x'] %>
+            </td>
+          </tr>
+          <tr>
+            <td>Offset Y</td>
+            <td>
+              <%= @json['cover']['offset_y'] %>
+            </td>
+          </tr>
+          <tr>
+            <td>source</td>
+            <td>
+              <%= image_tag @json['cover']['source'] %>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <% end %>
+    <tr class="success">
+      <td>Founded</td>
+      <td><%= @json['founded'] %></td>
+    </tr>
+    <tr class="info">
+      <td>Has added app</td>
+      <td><%= @json['has_added_app'] %></td>
+    </tr>
+    <tr class="warning">
+      <td>Is community page</td>
+      <td><%= @json['is_community_page'] %></td>
+    </tr>
+    <tr class="danger">
+      <td>Is published</td>
+      <td><%= @json['is_published'] %></td>
+    </tr>
+    <tr class="active">
+      <td>Likes</td>
+      <td><%= @json['likes'] %></td>
+    </tr>
+    <tr class="success">
+      <td>Link</td>
+      <td><%= link_to @json['link'], @json['link'] %></td>
+    </tr>
+    <tr class="info">
+      <td>Mission</td>
+      <td><%= @json['mission'] %></td>
+    </tr>
+    <tr class="warning">
+      <td>Name</td>
+      <td><%= @json['name'] %></td>
+    </tr>
+    <% if !@json['parking'].nil? %>
+    <tr class="danger">
+      <td>Parking</td>
+      <td>
+        <table class="table table-bordered">
+          <tr>
+            <td>Lot</td>
+            <td><%= @json['parking']['lot'] %></td>
+          </tr>
+          <tr>
+            <td>Street</td>
+            <td><%= @json['parking']['street'] %></td>
+          </tr>
+          <tr>
+            <td>Valet</td>
+            <td><%= @json['parking']['valet'] %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <% end %>
+    <tr class="active">
+      <td>Talking about count</td>
+      <td><%= @json['talking_about_count'] %></td>
+    </tr>
+    <tr class="info">
+      <td>Username</td>
+      <td><%= @json['username'] %></td>
+    </tr>
+    <tr class="success">
+      <td>Website</td>
+      <td><%= link_to @json['website'], @json['website'] %></td>
+    </tr>
+    <tr class="warning">
+      <td>Were here count</td>
+      <td><%= @json['were_here_count'] %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>

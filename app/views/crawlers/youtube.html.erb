@@ -1,0 +1,10 @@
+<%
+  @urls.each do |url|
+    doc = Nokogiri::HTML(open(url), nil,"UTF-8") rescue nil
+%>
+	<div class="alert alert-info">
+    <p><%= link_to doc.xpath("//h1['watch-headline-title']/span").text.gsub(/\n/,''), url, target: '_blank' %></p>
+    <hr>
+    <p><%= doc.xpath("//p[@id='eow-description']").text %></p>
+  </div>
+<% end %>
