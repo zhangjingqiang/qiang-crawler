@@ -1,5 +1,5 @@
 class CrawlersController < ApplicationController
-  before_action :set_keyword, :except => [:search, :top, :page_rank]
+  before_action :set_keyword
   
   def google
     escaped_url = URI.escape("https://www.google.com/search?q=#{@keyword}&oe=utf-8&hl=en")
@@ -44,23 +44,6 @@ class CrawlersController < ApplicationController
       url="http://www.amazon.com/dp/#{asin}"
       @doc << Nokogiri::HTML(open(url)) rescue nil
     }
-  end
-  
-  def search
-    session['keyword'] = params[:s]
-    Keyword.create(:word => params[:s]) if params[:s] != ''
-    redirect_to request.env["HTTP_REFERER"]
-  end
-
-  def top
-    @keywords = Keyword.select('word').group("word").count.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }.first(10)
-  end
-
-  def page_rank
-    target_url = URI.parse(request.original_url).host
-    @backlinks = PageRankr.backlinks(target_url, :google, :bing, :yahoo, :alexa)
-    @indexes = PageRankr.indexes(target_url, :google, :bing, :yahoo)
-    @ranks = PageRankr.ranks(target_url, :alexa_us, :alexa_global, :google, :moz_rank, :page_authority)
   end
   
   private

@@ -25,9 +25,8 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li<%= ' class=active' if params[:controller] == 'crawlers' and params[:action] == 'top' %>><a href="<%= top_path %>">Top 10</a></li>
-        <li<%= ' class=active' if params[:controller] == 'crawlers' and params[:action] == 'page_rank' %>><a href="<%= page_rank_path %>">Page rank</a></li>
-        <li><a href="http://about.me/zhangjingqiang">About me</a></li>
+        <li<%= ' class=active' if params[:controller] == 'top' and params[:action] == 'index' %>><a href="<%= top_path %>">Top 10</a></li>
+        <li<%= ' class=active' if params[:controller] == 'page_rank' and params[:action] == 'index' %>><a href="<%= page_rank_path %>">Page rank</a></li>
       </ul>
       <form class="navbar-form navbar-right" action="<%= search_path %>">
         <input type="text" name="s" class="form-control" placeholder="Search..." value="<%= session['keyword'] %>">
